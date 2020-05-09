@@ -1,0 +1,16 @@
+version: '1'
+services:
+  pd_api:
+    build: .
+    restart: always
+    ports:
+     - "8000:8000"
+  lb:
+    image: 'dockercloud/haproxy:1.2.1'
+    links:
+     - pd_api
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    ports:
+     - "80:80"
