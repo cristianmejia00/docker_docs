@@ -6,7 +6,7 @@ services:
     ports:
      - "8000"
   lb:
-    image: 'dockercloud/haproxy:1.2.1'
+    image: 'dockercloud/haproxy:1.6.5'
     links:
      - pd_api
     volumes:
